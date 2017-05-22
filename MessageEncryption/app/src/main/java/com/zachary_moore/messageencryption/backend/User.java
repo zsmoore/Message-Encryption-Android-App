@@ -61,6 +61,22 @@ public class User {
         _messages.add(toAdd);
     }
 
+    public void removeMessage(Message toRemove){
+        _messages.remove(toRemove);
+    }
+
+    public void encryptAll(){
+        for(Message m : _messages){
+            if(m.isPlainText()) m.swapText();
+        }
+    }
+
+    public void decryptAll(){
+        for(Message m : _messages){
+            if(m.isEncrypted()) m.swapText();
+        }
+    }
+
     public SecretKeySpec getMasterKey(){
         return _masterKey;
     }

@@ -138,6 +138,14 @@ public class Message {
         }
     }
 
+    public boolean isEncrypted(){
+        return _currentState == ENCRYPTED;
+    }
+
+    public boolean isPlainText(){
+        return _currentState == PLAIN;
+    }
+
     /**
      * Gets the current text that is displayed in the message.
      * @return Displayed Text
