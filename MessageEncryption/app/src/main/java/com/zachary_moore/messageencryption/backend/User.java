@@ -1,5 +1,7 @@
 package com.zachary_moore.messageencryption.backend;
 
+import android.util.Log;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -12,6 +14,8 @@ import javax.crypto.spec.SecretKeySpec;
  */
 
 public class User {
+
+    private static final String TAG = "User";
 
     private ArrayList<Message> _messages;
     private String _userName;
@@ -39,11 +43,11 @@ public class User {
         try {
             sha = MessageDigest.getInstance(hashMethod);
         } catch(NoSuchAlgorithmException e){
-            System.out.println("Incorrect hash method Using SHA-1");
+            Log.e(TAG, "Invalid HashMethod Using SHA-1.");
             try {
                 sha = MessageDigest.getInstance("SHA-1");
             } catch(NoSuchAlgorithmException e2){
-                e2.printStackTrace();
+                Log.e(TAG, "Sha-1 Went Wrong.");
             }
         }
 
@@ -51,6 +55,10 @@ public class User {
         secretKey = Arrays.copyOf(secretKey, 16);
 
         return new SecretKeySpec(secretKey, "AES");
+    }
+
+    public void addMessage(Message toAdd){
+        _messages.add(toAdd);
     }
 
     public SecretKeySpec getMasterKey(){
