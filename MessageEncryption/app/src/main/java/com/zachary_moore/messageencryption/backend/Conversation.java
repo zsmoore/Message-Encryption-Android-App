@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Conversation {
 
-    private static final String TAG = "Conversation";
+    private static final String TAG = "ConversationDisplay";
 
     private User _owner;
     private ArrayList<User> _recipients;
@@ -22,6 +22,7 @@ public class Conversation {
 
     public Conversation(User owner){
         _recipients = new ArrayList<>();
+        _messages = new ArrayList<>();
         _owner = owner;
     }
 
@@ -84,5 +85,9 @@ public class Conversation {
         for(Message m : _messages){
             if(m.isEncrypted()) m.swapText();
         }
+    }
+
+    public ArrayList<Message> getMessages(){
+        return _messages;
     }
 }

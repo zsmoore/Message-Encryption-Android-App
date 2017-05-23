@@ -1,9 +1,10 @@
-package com.zachary_moore.messageencryption;
+package com.zachary_moore.messageencryption.frontend;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.zachary_moore.messageencryption.R;
 import com.zachary_moore.messageencryption.backend.Message;
 import com.zachary_moore.messageencryption.backend.User;
 
